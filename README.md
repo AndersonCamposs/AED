@@ -1,0 +1,1 @@
+Este repositório tem como objetivo armazenar os códigos desenvolvidos nas aulas da discipina de algoritmos e estruturas de dados, cursada atualmente no 2° período do curso de licenciatura em computação no IFPE.
