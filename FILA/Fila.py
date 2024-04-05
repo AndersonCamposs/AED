@@ -47,7 +47,6 @@ passaro = Animal("Pássaro")
 macaco = Animal("Macaco")
 tubarao = Animal("Tubarao")
 
-
 filaDeAnimais.adicionar(macaco)
 filaDeAnimais.adicionar(tubarao)
 
@@ -57,4 +56,5 @@ print ("O tamanho é: ", filaDeAnimais.getTamanho())
 
 print ("------------------")
 
+# esta linha foi adicionada pelo git bash
 
