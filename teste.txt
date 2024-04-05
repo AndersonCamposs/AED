@@ -1,0 +1,2 @@
+este arquivo foi inserido pelo git bash
+q
