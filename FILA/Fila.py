@@ -55,6 +55,3 @@ filaDeAnimais.imprimir()
 print ("O tamanho é: ", filaDeAnimais.getTamanho())
 
 print ("------------------")
-
-# esta linha foi adicionada pelo git bash
-
