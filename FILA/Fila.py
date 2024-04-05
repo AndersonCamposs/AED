@@ -19,7 +19,6 @@ class Fila:
             aux = aux.prox
         print(contador, aux.nome)
 
-   
     def adicionar(self, novoElemento):
         
         if (self.cabeca == None):
@@ -37,12 +36,8 @@ class Fila:
         aux.prox = None
         self.tamanho-=1#aumentando o tamnho da lista depois de add
 
-    
-
     def getTamanho(self):
         return self.tamanho 
-
-
 
 filaDeAnimais = Fila()
 peixe = Animal("Tilápia")
