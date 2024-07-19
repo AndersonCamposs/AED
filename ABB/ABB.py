@@ -43,9 +43,6 @@ class ABB:
     
     def search(self, subArvore, searchValue):
         # impede que a busca seja realizada em uma árvore vazia
-        if (self.root == None):
-            return False
-
         if (subArvore == None):
             # se chegar aqui, é  porque chegou no último nó e 
             # não encontrou o valor buscado
