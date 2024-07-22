@@ -59,14 +59,4 @@ class ABB:
                     return self.search(subArvore.left, searchValue)
                 if (subArvore.value < searchValue):
                     return self.search(subArvore.right, searchValue)
-            
-abb = ABB()
-no1 = No(10)
-no2 = No(15)
-no3 = No(12)
-abb.insert(abb.root, no1)
-abb.insert(abb.root, no2)
-abb.insert(abb.root, no3)
-
-busca = abb.search(abb.root, 12)
-print(busca)
+                
