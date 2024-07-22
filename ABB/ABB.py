@@ -46,12 +46,12 @@ class ABB:
         if (subArvore == None):
             # se chegar aqui, é  porque chegou no último nó e 
             # não encontrou o valor buscado
-            return False
+            return
         
         else:
             # verifica se o valor do nó atual é o buscado
             if (subArvore.value == searchValue):
-                return True
+                return subArvore #retorna o nó no qual o valor foi encontrado
             else: 
                 # verifica se o valor buscado está na
                 #  esquerda ou direita
@@ -60,3 +60,13 @@ class ABB:
                 if (subArvore.value < searchValue):
                     return self.search(subArvore.right, searchValue)
             
+abb = ABB()
+no1 = No(10)
+no2 = No(15)
+no3 = No(12)
+abb.insert(abb.root, no1)
+abb.insert(abb.root, no2)
+abb.insert(abb.root, no3)
+
+busca = abb.search(abb.root, 12)
+print(busca)
