@@ -57,6 +57,6 @@ class ABB:
                 #  esquerda ou direita
                 if (subArvore.value > searchValue):
                     return self.search(subArvore.left, searchValue)
-                if (subArvore.value < searchValue):
+                else:
                     return self.search(subArvore.right, searchValue)
                 
