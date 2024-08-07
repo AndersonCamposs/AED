@@ -1,4 +1,5 @@
 from Aluno import Aluno
+from random import sample
 
 
 class AVL:
@@ -9,15 +10,15 @@ class AVL:
         if (subTree == None): return 0
         return 1 + max(self.height(subTree.left), self.height(subTree.right))
     
-    def balancingFactor(self, subTree):
-        if (subTree == None): return 0
+    def getBalancingFactor(self, subTree):
+        if (not subTree): return 0
         return self.height(subTree.left) - self.height(subTree.right)
     
     def simpleRotationRight(self, subTree):
         aux = subTree.left
         subTree.left = aux.right
         aux.right = subTree
-        return aux # Setar com o filho à esquerda do pai
+        return aux
     
     def simpleRotationLeft(self, subTree):
         aux = subTree.right
@@ -32,42 +33,44 @@ class AVL:
         if (subTree.right != None):
             self.printPreOrder(subTree.right)
 
-    def insert(self, newElement, subTree):
-        if (subTree == None):
-            self.root = newElement
-            return self.root
+    def insert(self, newElement):
+        self.root = self._insert(newElement, self.root)
+
+    def _insert(self, newElement, subTree):
+        if (not subTree):
+            return newElement
         
-        if (newElement.id <= subTree.id):
-            if (subTree.left != None):
-                self.insert(newElement, subTree.left)
-            else: 
-                subTree.left = newElement
-                return newElement
+
+        elif (newElement.id < subTree.id):
+            subTree.left = self._insert(newElement, subTree.left)
         
-        fb = self.balancingFactor(subTree)
-        if (fb > 1 or fb < -1):
-            if (fb > 1):
-                print("Simple Rotation Right of node", subTree.id)
-                nodeTopOfRotation = self.simpleRotationRight(subTree)
-                if (nodeTopOfRotation.right == self.root):
-                    self.root = nodeTopOfRotation
-            if (fb < -1):
-                print("Simple Rotation Left of node", subTree.id)
-                nodeTopOfRotation = self.simpleRotationLeft(subTree)
-                if (nodeTopOfRotation.left == self.root):
-                    self.root = nodeTopOfRotation
+        else:
+            subTree.right = self._insert(newElement, subTree.right)
+            
+        balancingFactor = self.getBalancingFactor(subTree)
 
+        if (balancingFactor > 1 and newElement.id < subTree.left.id):
+            return self.simpleRotationRight(subTree)
+        
+        if (balancingFactor < -1 and newElement.id > subTree.right.id):
+            return self.simpleRotationLeft(subTree)
+        
+        if (balancingFactor > 1 and newElement.id > subTree.left.id):
+            subTree.left = self.simpleRotationLeft(subTree.left)
+            return self.simpleRotationRight(subTree)
+        
+        if (balancingFactor < -1 and newElement.id < subTree.right.id):
+            subTree.right = self.simpleRotationRight(subTree.right)
+            return self.simpleRotationLeft(subTree)
+        
+        return subTree
 
-
+values = sample(range(1, 101), 15)
+print(values)
 
 avl = AVL()
 
-a1 = Aluno(50)
-a2 = Aluno(25)
-a3 = Aluno(10)
+for value in values:
+    node = Aluno(value)
+    avl.insert(node)
 
-avl.insert(a1, avl.root)
-avl.insert(a2, avl.root)
-avl.insert(a3, avl.root)
-
-avl.printPreOrder(avl.root)
